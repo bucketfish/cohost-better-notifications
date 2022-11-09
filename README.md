@@ -7,7 +7,7 @@ it's really bodgy. but it seems to work right now. who knows?
 ## install instructions
 1. download **cohost-better-notifications.zip** from the right under **releases**
 2. unzip it
-3. go to [chrome://extensions] if you're on chrome, and [opera:extensions] if you're on opera
+3. go to chrome://extensions if you're on chrome, and opera:extensions if you're on opera
 4. turn on **developer mode** (top right)
 5. click **load unpacked** and select the unzipped extension you downloaded
 6. see it in action at your [notifications page](https://cohost.org/rc/project/notifications)!
