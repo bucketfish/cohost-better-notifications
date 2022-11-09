@@ -4,7 +4,7 @@ this is a chrome extension to make your cohost notifications more readable. it c
 
 it's really bodgy. but it seems to work right now. who knows?
 
-yell at me on discord (bucketfish#3961) if it's falling apart! (you can also find me on [cohost](https://cohost.org/bucketfish), of course.
+yell at me on discord (bucketfish#3961) if it's falling apart! (you can also find me on [cohost](https://cohost.org/bucketfish), of course.)
 
 <img width="1512" alt="photo of it in action" src="https://user-images.githubusercontent.com/66538443/200746753-5410cde6-5537-4b6e-8c68-8d33a94032de.png">
 
