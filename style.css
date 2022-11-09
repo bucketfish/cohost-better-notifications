@@ -1,0 +1,74 @@
+/* .cursor-pointer.flex-col.bg-white.p-3.text-notBlack:not(:has(p)) {
+  display: none;
+} */
+
+#bn-sidebar {
+  position: absolute;
+  width: 27vw;
+  right: 0;
+  top: 128px;
+  /* background-color: red; */
+}
+
+.bn-date-box {
+  border-radius: 8px;
+  border-collapse: separate;
+  background-color: white;
+}
+
+.bn-item {
+  padding: 0.75rem;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+
+.bn-date{
+  /* border-radius: 25px; */
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px 8px 0 0;
+  background-color: rgb(255 216 168);
+  color: rgb(25 25 25);
+  text-transform: uppercase;
+  font-size: .75rem;
+  line-height: 1rem;
+  font-family: League Mono,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,liberation mono,courier new,monospace;
+  text-align: right;
+
+}
+
+#bn-reload:hover {
+  color: #777;
+}
+
+.bn-notif {
+  border-top-width: 1px;
+  /* cursor: pointer; */
+  border-color: rgb(191 186 181);
+  color: rgb(25 25 25);
+
+}
+
+.bn-notif-text {
+  width: calc(100% - 40px);
+}
+
+.bn-bold {
+  font-weight: bold;
+}
+
+.bn-text {
+  color: rgb(130 127 124);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+238 173 199;
+    --color-foreground-300: 211 116 155;
+    --color-foreground-400: 174 68 115;
+    --color-foreground-600: 103 26 61;
+    --color-foreground-700: 81 17 46;

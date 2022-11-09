@@ -1,0 +1,22 @@
+{
+  "name": "cohost better notifications",
+  "description": "make your cohost notifications tab better, so you can look at comments and stuff!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "content_scripts": [{
+    "css": ["style.css"],
+    "js": ["script.js"],
+    "matches": ["*://cohost.org/rc/project/notifications"]
+  }],
+  "permissions": ["tabs", "storage"],
+  "host_permissions": [
+    "*://cohost.org/rc/project/notifications"
+  ],
+  "icons":{
+    "256": "icon.png"
+  },
+  "action":{
+      "default_popup": "index.html",
+      "default_title": "cohost better notifications"
+    }
+}
