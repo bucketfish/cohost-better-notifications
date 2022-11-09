@@ -10,7 +10,9 @@ it's really bodgy. but it seems to work right now. who knows?
 3. go to chrome://extensions if you're on chrome, and opera:extensions if you're on opera
 4. turn on **developer mode** (top right)
 5. click **load unpacked** and select the unzipped extension you downloaded
-6. see it in action at your [notifications page](https://cohost.org/rc/project/notifications)!
+6. it's installed!
+7. open your extensions menu and click on 'cohost better notifications'. toggle the 'enable' switch.
+8. see it in action at your [notifications page](https://cohost.org/rc/project/notifications)!
 
 ## things which it's not really good at
 - when you click 'load more' on your notifications, you gotta click 'reload' on the sidebar. sorryy.
