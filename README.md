@@ -18,6 +18,12 @@ yell at me on discord (bucketfish#3961) if it's falling apart! (you can also fin
 7. open your extensions menu and click on 'cohost better notifications'. toggle the 'enable' switch.
 8. see it in action at your [notifications page](https://cohost.org/rc/project/notifications)!
 
+## update instructions
+if you've already downloaded an older version and want to update to a newer version!
+1. go to chrome://extensions or opera:extensions
+2. find 'cohost better notifications'. click **remove**
+3. follow install instructions again!
+
 ## things which it's not really good at
 - when you click 'load more' on your notifications, you gotta click 'reload' on the sidebar. sorryy.
 - if you have a new notification that's grouped with one of the sidebar notifs, it won't tell you which is the new one. just gotta kinda figure it out. (this aligns to the 'don't care about like count' core of cohost, doesn't it?)
