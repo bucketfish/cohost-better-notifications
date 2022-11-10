@@ -7,12 +7,14 @@ function personlink(name) {
 function dothings() {
   var enabled
 
+  // check whether extension is on
   chrome.storage.sync.get('enabled', function(data) {
     enabled = data.enabled;
 
   if (enabled){
     const grid = document.getElementsByTagName("body")[0];
 
+    // create sidebar
     var sidebar
     if (document.getElementById("bn-sidebar") == null){
       sidebar = document.createElement("div");
@@ -23,70 +25,52 @@ function dothings() {
     }
 
 
-    var notifs = {
-
-    } // each post: like, rp, (ignore comment), (ignore rp w comment), link
-    // outside of post: follows
-
+    var notifs = {} // each post: like, rp
     var follows = []
 
-    const list = document.getElementsByClassName("divide-gray-300")[0].children;
+    // big list of days
+    const biglist = document.getElementsByTagName("section")[0].children;
 
-    // console.log(list)
+    for (const each of biglist){
+      if (each.tagName == "button") {continue}; // ignore 'load more' button lol. it's not a day
+      var list = each.children;
 
-    for (var i = 1; i < list.length; i++){
-      const cur = list[i];
-      var info = cur.children[0].children[2].children[0].innerText//.children[0]//.innerText;
-      var person = info.split(" ")[0]
-      var action = info.substr(info.indexOf(" ") + 1);
-      // console.log(person);
-      // console.log(action)
+      for (var i = 1; i < list.length; i++){
 
-      if (action == "liked your post" || action == "shared your post") {
-        // get post
+        // split each notif into vars
+        const cur = list[i];
+        var info = cur.children[0].children[2].children[0].innerText;
+        var person = info.split(" ")[0]
+        var action = info.substr(info.indexOf(" ") + 1);
 
-        var content = cur.children[0].children[2].children[1].innerHTML//[1].innerHTML//.children[1]//.innerHTML;
-        //content = person.slice(9, -8)
-        // console.log(content);
+        if (action == "liked your post" || action == "shared your post") {
+          var content = cur.children[0].children[2].children[1].innerHTML;
 
-        if (!notifs[content]){
-          notifs[content] = {
-            "liked": [],
-            "shared": []
+          // save the content into notifs[]
+          if (!notifs[content]){
+            notifs[content] = {
+              "liked": [],
+              "shared": []
+            }
           }
+          if (action == "liked your post"){ notifs[content]["liked"].push(person); }
+          if (action == "shared your post"){ notifs[content]["shared"].push(person); }
         }
 
-        if (action == "liked your post"){
-          notifs[content]["liked"].push(person)
-        }
-        if (action == "shared your post"){
-          notifs[content]["shared"].push(person)
-        }
-
-        // console.log(notifs)
-
-        // cur.style.backgroundColor = "#000";
-
+        // save follows into separate array
+        if (action == "followed you") { follows.push(person);}
       }
-
-      if (action == "followed you") {
-        // get post
-
-        // var content = cur.children[0].children[2].children[1].innerHTML//[1].innerHTML//.children[1]//.innerHTML;
-        //content = person.slice(9, -8)
-        // console.log(content);
-
-        follows.push(person);
-
-      }
-
     }
 
 
 
 
 
-    console.log(follows)
+    // console.log(follows)
+
+    // now we have the data. format them into the sidebar
+
+    // follows first
     var follow_text = ""
     if (follows.length > 0){
       follow_text = '<div class="bn-notif bn-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="h-6 w-6 flex-none"><path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path></svg><div class="bn-notif-text">'
@@ -100,6 +84,7 @@ function dothings() {
       follow_text += " followed you </div></div>"
     }
 
+    // the rest of the notifications
     var injecttext = ""
     for (const [key, value] of Object.entries(notifs)) {
       var liked = value["liked"]
@@ -107,6 +92,7 @@ function dothings() {
 
       var liked_text = ''
 
+      // format liked
       for (const person of liked) {
         if (person == liked[0]) {
           liked_text += '<a <a class="font-bold hover:underline" href="' + personlink(person) + '">' + person + '</a>';
@@ -121,7 +107,7 @@ function dothings() {
       }
 
 
-
+      // format shared
       var shared_text = ""
 
       for (const person of shared) {
@@ -139,9 +125,11 @@ function dothings() {
 
     }
 
+    // add it all together
     sidebar.innerHTML = '<div class="bn-date-box"><div class="bn-date bn-item"><button id="bn-reload">reload</button><span>cohost better notifications</span></div>' + follow_text + injecttext + "</div> <style>.cursor-pointer.flex-col.bg-white.p-3.text-notBlack:not(:has(p)) {display: none;}</style>"
 
 
+    // insert into page
     grid.insertBefore(sidebar, grid.children[0])
 
     reloadbutton = document.getElementById("bn-reload")
@@ -152,13 +140,5 @@ function dothings() {
 
 }
 
-
-// for (const a of document.querySelectorAll("button")) {
-//   if (a.textContent.includes("Load More")) {
-//     loadbutton = a
-//   }
-// }
-
-
-
-setTimeout(dothings(), 100); // How long you want the delay to be, measured in milliseconds.
+// do the thing *slightly* later than page load, because the notifs wouldn't have loaded yet
+setTimeout(dothings(), 100);
