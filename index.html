@@ -5,11 +5,15 @@
     <title>cohost better notifications!</title>
   </head>
   <body>
-    <div>
+    <div style="display: flex; flex-direction: column; align-items: center;">
     <style>
 
       html {
         font-family: Atkinson Hyperlegible,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,noto sans,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji;
+      }
+
+      body {
+        min-width:200px;
       }
 
       .switch {
@@ -74,6 +78,10 @@
         border-radius: 50%;
       }
 
+      p {
+        text-align: center;
+      }
+
 
 
     </style>
@@ -81,10 +89,18 @@
     <script src="popup.js"></script>
 
 
-    <p style="text-align: center; width: 100%; font-size: 16px; ">enable</p>
+    <p style="width: 100%; font-size: 16px; ">enable better cohost notifications</p>
 
     <label class="switch">
       <input id="switch" type="checkbox" checked>
+      <span class="slider round"></span>
+    </label>
+
+    <p style="width: 100%; font-size: 16px; margin-bottom: 0">show sidebar</p>
+    <p style="margin-top: 0;">this will show all your like and reshare notifications without additional comments.</p>
+
+    <label class="switch">
+      <input id="sidebar-switch" type="checkbox" checked>
       <span class="slider round"></span>
     </label>
 
