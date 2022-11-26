@@ -19,10 +19,9 @@ function dothings() {
         if (!data.sidebar) {
 
           var insertstyle = document.createElement("style")
-          insertstyle.innerHTML = `.cursor-pointer.flex-col.bg-white.p-3.text-notBlack:not(:has(p)) {display: none;} #bn-sidebar{display: none}`
+          insertstyle.innerHTML = `.flex-col.bg-white.p-3.text-notBlack:not(:has(p)) {display: none;} #bn-sidebar{display: none}`
           // insert into page
           grid.insertBefore(insertstyle, grid.children[0]);
-
         } else {
           // create sidebar
           var sidebar
@@ -128,7 +127,7 @@ function dothings() {
           }
 
           // add it all together + cool css that hides the posts
-          sidebar.innerHTML = '<div class="bn-date-box"><div class="bn-date bn-item"><button id="bn-reload">reload</button><span>cohost better notifications</span></div>' + follow_text + injecttext + "</div> <style>.cursor-pointer.flex-col.bg-white.p-3.text-notBlack:not(:has(p)) {display: none;}</style>"
+          sidebar.innerHTML = '<div class="bn-date-box"><div class="bn-date bn-item"><button id="bn-reload">reload</button><span>cohost better notifications</span></div>' + follow_text + injecttext + "</div> <style>.flex-col.bg-white.p-3.text-notBlack:not(:has(p)) {display: none;}</style>"
 
           // insert into page
           grid.insertBefore(sidebar, grid.children[0])
@@ -136,7 +135,6 @@ function dothings() {
           reloadbutton = document.getElementById("bn-reload")
           reloadbutton.onclick = dothings
         }
-
       });
     }
   });
